@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+//    "rootDir": "src",
+    "outDir": "build",
+    "alwaysStrict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "lib": [
+      "ES2022"
+    ],
+    "module": "ES2022",
+    "noEmitOnError": false,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "stripInternal": true,
+    "target": "ES2022",
+    "moduleResolution": "Node",
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "tslib": [
+        "./node_modules/tslib/tslib.es6.js"
+      ],
+      "#~/*": [
+        "./*"
+      ],
+      "#src/*": [
+        "./src/*"
+      ],
+      "#test/*": [
+        "./test/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/index.ts",
+    "*.d.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

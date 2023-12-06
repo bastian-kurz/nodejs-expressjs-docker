@@ -1,0 +1,59 @@
+{
+  "name": "nodejs-expressjs-docker",
+  "scripts": {
+    "dp-check": "yarn npm-check-updates",
+    "db-admin": "dynamodb-admin",
+    "build": "tsc",
+    "dev": "concurrently \"tsx watch src/index.ts\" \"yarn tsoa spec\"",
+    "predev": "yarn swagger",
+    "prebuild": "yarn swagger",
+    "start": "node build/index.js",
+    "swagger": "tsoa spec",
+    "test": "jest"
+  },
+  "packageManager": "yarn@4.0.2",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "dynamodb-onetable": "^2.7.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^5.0.0",
+    "tsoa": "^5.1.1"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/axios": "^0.14.0",
+    "@types/eslint": "^8",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.10",
+    "@types/morgan": "^1.9.9",
+    "@types/swagger-ui-express": "^4.1.6",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "concurrently": "^8.2.2",
+    "dynamodb-admin": "^4.6.1",
+    "eslint": "^8.55.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-no-floating-promise": "^1.0.2",
+    "jest": "^29.7.0",
+    "npm-check-updates": "^16.14.11",
+    "pactum": "^3.5.1",
+    "ts-jest": "^29.1.1",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.2"
+  },
+  "type": "module",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "coverageDirectory": "./coverage",
+    "moduleNameMapper": {
+      "^#~/(.*)$": "<rootDir>/$1",
+      "^#src/(.*)$": "<rootDir>/src/$1",
+      "^#test/(.*)$": "<rootDir>/test/$1"
+    }
+  }
+}
