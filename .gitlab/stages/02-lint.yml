@@ -1,0 +1,9 @@
+es-lint:
+  stage: lint
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  extends: .base
+  image: node:20.10.0-alpine
+  script:
+    - !reference [.script_template, script]
+    - yarn eslint

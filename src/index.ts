@@ -11,12 +11,6 @@ dotenv.config();
 const port: number = Number(process.env.APP_PORT) || 3000;
 const app: Application = express();
 
-app.get('/ping', async (_req, res) => {
-  res.send({
-    message: 'pong',
-  });
-});
-
 // Use body parser to read sent json payloads
 app.use(urlencoded({ extended: true }));
 app.use(express.json());

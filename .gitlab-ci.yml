@@ -1,0 +1,11 @@
+stages:
+  - validate # basic app validation
+  - lint # linter and static analysis
+  - unit-test # unit
+
+before_script:
+  - corepack enable
+
+include:
+  - local: .gitlab/base.yml # defines basic stuff and base templates
+  - local: .gitlab/stages/*.yml # put your jobs into the matching stage file you want it to run

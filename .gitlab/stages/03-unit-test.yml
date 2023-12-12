@@ -1,0 +1,16 @@
+jest:
+  stage: unit-test
+  extends: .base
+  image: docker
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main"
+  services:
+    - docker:dind
+  before_script:
+    - docker --version
+  script:
+    - export DYNAMODB_LOCAL_URL=http://dynamodb-local:8000
+    - docker-compose up -d
+    - docker ps
+    - docker exec application-codename-pegasus yarn test

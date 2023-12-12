@@ -1,0 +1,11 @@
+security-check:
+  stage: validate
+  extends: .base
+  image: node:20.10.0-alpine
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  allow_failure: true
+  script:
+    - corepack enable
+    - apk add --no-cache git
+    - yarn npm audit

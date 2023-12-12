@@ -1,0 +1,17 @@
+# for jobs which should run on each MR/Pipeline
+.base:
+  timeout: 30m
+  interruptible: true
+  dependencies: [] # do not download assets from previous stages by default
+  rules:
+    - when: always
+
+.long-running:
+  extends: .base
+  timeout: 2h
+  dependencies: [] # do not download assets from previous stages by default
+
+.script_template:
+  script:
+    - apk add --no-cache make
+    - yarn install
