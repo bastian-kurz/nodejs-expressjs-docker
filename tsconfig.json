@@ -10,7 +10,8 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "lib": [
-      "ES2022"
+      "ES2022",
+      "dom"
     ],
     "module": "ES2022",
     "noEmitOnError": false,

@@ -9,19 +9,21 @@ services:
       args:
         APP_PORT: "${APP_PORT}"
     volumes:
-      - ./src:/app/src
+      - ./:/app/
     ports:
       - "${APP_PORT}:${APP_PORT}"
     depends_on:
       - dynamodb
+    links:
+      - dynamodb
 
   dynamodb:
-    image: amazon/dynamodb-local
+    image: amazon/dynamodb-local:latest
     container_name: dynamodb-local-${APP_NAME}
     volumes:
       - ./docker/dynamodb-data:/home/dynamodblocal/data
     ports:
       - "${DYNAMODB_PORT}:${DYNAMODB_PORT}"
-    user: root
     working_dir: /home/dynamodblocal
-    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/"
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    user: root # issue of the image we have to use root privileges to be able to write to the volume

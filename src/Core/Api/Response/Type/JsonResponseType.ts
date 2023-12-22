@@ -1,25 +1,26 @@
-import { EntityAwareInterface } from '#src/Core/EntityAwareInterface';
+import EntitySearchResult from '#src/Core/DataAbstractionLayer/Search/EntitySearchResult';
+import { Entity } from '#src/Core/DataAbstractionLayer/Entity';
+import { PaginationResponseParams } from '#src/Core/DataAbstractionLayer/Search/Paginator';
 
 export interface DetailResponse{
-  data?: EntityAwareInterface|string;
+  data?: Entity|null|string;
 }
 
 export interface ListResponse{
-  total: number;
-  page: number;
-  data: EntityAwareInterface[];
+  next: string|null;
+  prev: string|null;
+  data: Entity[];
 }
 
-export const CreateDetailResponse = (entity: EntityAwareInterface): DetailResponse => {
-  return { data: entity };
+export const CreateDetailResponse = (entity: EntitySearchResult): DetailResponse => {
+  return { data: entity.getEntities().first() };
 };
 
-// this is just a dummy implementation should be implemented correct if other parts are created
-export const CreateListResponse = (entity: EntityAwareInterface[]): ListResponse => {
+export const CreateListResponse = (entities: EntitySearchResult, pagination?: PaginationResponseParams): ListResponse => {
   return {
-    total: 1, // @ToDo implement correct totalCount calculation
-    page: 1, // @ToDo implement correct pagination
-    data: entity,
+    next: pagination?.next ?? null,
+    prev: pagination?.prev ?? null,
+    data: entities.getEntities().getElements(),
   };
 };
 

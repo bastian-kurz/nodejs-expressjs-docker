@@ -1,36 +1,607 @@
 {
-	"components": {
-		"examples": {},
-		"headers": {},
-		"parameters": {},
-		"requestBodies": {},
-		"responses": {},
-		"schemas": {},
-		"securitySchemes": {}
-	},
-	"info": {
-		"title": "nodejs-expressjs-docker",
-		"version": "0.0.1",
-		"contact": {}
-	},
-	"openapi": "3.0.0",
-	"paths": {
-		"/healthy": {
-			"get": {
-				"operationId": "Healthy",
-				"responses": {
-					"204": {
-						"description": ""
-					}
-				},
-				"security": [],
-				"parameters": []
-			}
-		}
-	},
-	"servers": [
-		{
-			"url": "/"
-		}
-	]
+  "openapi": "3.0.3",
+  "info": {
+    "title": "nodejs-expressjs-docker",
+    "version": "0.0.1",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Default",
+      "description": "Operations for default behaviour"
+    },
+    {
+      "name": "Example",
+      "description": "Example operations for the skeleton app"
+    }
+  ],
+  "paths": {
+    "/example/{id}": {
+      "get": {
+        "summary": "Get a single example item",
+        "description": "This endpoint allows to get an Example item.",
+        "operationId": "getExample",
+        "tags": [
+          "Example"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ExampleResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestParameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          },
+          "504": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a example resource by a given id",
+        "description": "This is just an example update endpoint in the skeleton api",
+        "operationId": "updateExample",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ExampleResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          },
+          "504": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        },
+        "tags": [
+          "Example"
+        ],
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Example"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a example resource by a given id",
+        "description": "This is just an example delete endpoint in the skeleton api",
+        "operationId": "deleteExample",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestParameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          },
+          "504": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        },
+        "tags": [
+          "Example"
+        ]
+      }
+    },
+    "/example": {
+      "get": {
+        "summary": "Get a list of Example resources",
+        "description": "This endpoint allows to get a list if Example items.",
+        "operationId": "getListExample",
+        "tags": [
+          "Example"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/LimitQueryParameter"
+          },
+          {
+            "$ref": "#/components/parameters/NextKeyParameter"
+          },
+          {
+            "$ref": "#/components/parameters/PrevKeyParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ExampleListResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestParameter"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          },
+          "504": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a example resource",
+        "description": "This is just an example create endpoint in the skeleton api",
+        "operationId": "createExample",
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/ExampleResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          },
+          "504": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        },
+        "tags": [
+          "Example"
+        ],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Example"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/healthy": {
+      "get": {
+        "tags": [
+          "Default"
+        ],
+        "summary": "Get a healthy status",
+        "description": "Returns a 204 if the Api is heahlty otherwise an error response",
+        "operationId": "healthy",
+        "responses": {
+          "204": {
+            "description": "App is healthy"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          },
+          "504": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        },
+        "security": [],
+        "parameters": []
+      }
+    }
+  },
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {
+      "IdParameter": {
+        "in": "path",
+        "name": "id",
+        "description": "Parameter to fetch a specific resource",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minimum": 32,
+          "example": "c706c9e5727d4c76bf785dc530b2c314"
+        }
+      },
+      "PageQueryParameter": {
+        "in": "query",
+        "name": "page",
+        "description": "Parameter for pagination",
+        "schema": {
+          "type": "integer",
+          "default": 1,
+          "example": 1
+        }
+      },
+      "LimitQueryParameter": {
+        "in": "query",
+        "name": "limit",
+        "description": "Max. result of resources per page",
+        "schema": {
+          "type": "integer",
+          "default": 25,
+          "example": 25
+        }
+      },
+      "NextKeyParameter": {
+        "in": "query",
+        "name": "nextKey",
+        "description": "Next key for pagination via api",
+        "schema": {
+          "type": "string",
+          "example": "eyJTSyI6IkV4YW1wbGUtMjAyMy0xMi0yMVQxMDo1NjoxNS42MzRaIiwiUEsiOiJFeGFtcGxlfjE4OWI4YzBhMzBhZDQ5NjI4MWFkMjJmZjIwYzdkODQ1IiwiTEsiOiJFeGFtcGxlIn0="
+        }
+      },
+      "PrevKeyParameter": {
+        "in": "query",
+        "name": "prevKey",
+        "description": "Previouse key for pagination via api",
+        "schema": {
+          "type": "string",
+          "example": "eyJTSyI6IkV4YW1wbGUtMjAyMy0xMi0yMVQxMDo1NjoxNS42MzRaIiwiUEsiOiJFeGFtcGxlfjE4OWI4YzBhMzBhZDQ5NjI4MWFkMjJmZjIwYzdkODQ1IiwiTEsiOiJFeGFtcGxlIn0="
+        }
+      }
+    },
+    "requestBodies": {},
+    "responses": {
+      "NoContent": {
+        "description": "No content"
+      },
+      "ExampleListResponse": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nextKey": {
+                  "type": "string",
+                  "example": "/example?limit=1&nextKey=eyJTSyI6IkV4YW1wbGUtMjAyMy0xMi0yMVQxMDo1NjoxNS42MzRaIiwiUEsiOiJFeGFtcGxlfjE4OWI4YzBhMzBhZDQ5NjI4MWFkMjJmZjIwYzdkODQ1IiwiTEsiOiJFeGFtcGxlIn0=",
+                  "description": "Next key for pagination via api"
+                },
+                "prevKey": {
+                  "type": "string",
+                  "example": "/example?limit=1&prevKey=eyJTSyI6IkV4YW1wbGUtMjAyMy0xMi0yMVQxMDo1NjoxNS42MzRaIiwiUEsiOiJFeGFtcGxlfjE4OWI4YzBhMzBhZDQ5NjI4MWFkMjJmZjIwYzdkODQ1IiwiTEsiOiJFeGFtcGxlIn0=",
+                  "description": "Prev key for pagination via api"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/Id"
+                      },
+                      {
+                        "$ref": "#/components/schemas/Example"
+                      },
+                      {
+                        "$ref": "#/components/schemas/CreatedAt"
+                      },
+                      {
+                        "$ref": "#/components/schemas/UpdatedAt"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ExampleResponse": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Id"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Example"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CreatedAt"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UpdatedAt"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadRequestParameter": {
+        "description": "Bad Request in order of a parameter validation error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Error": {
+                "value": {
+                  "statusCode": 400,
+                  "message": "Parameter :id should have a min/max length of 32 characters"
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Bad Request in order of a data validation error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Error": {
+                "value": {
+                  "statusCode": 400,
+                  "message": {
+                    "0": {
+                      "target": {
+                        "id": "c706c9e5727d4c76bf785dc530b2c314"
+                      },
+                      "property": "foo",
+                      "children": [],
+                      "constraints": {
+                        "isString": "foo must be a string"
+                      }
+                    },
+                    "1": {
+                      "target": {
+                        "id": "c706c9e5727d4c76bf785dc530b2c314"
+                      },
+                      "property": "bar",
+                      "children": [],
+                      "constraints": {
+                        "isInt": "bar must be an integer number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AuthFailure": {
+        "description": "Unauthorized or Forbidden",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Error": {
+                "value": {
+                  "statusCode": 500,
+                  "message": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadGateway": {
+        "description": "Service is throwing errors or timed out",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Error": {
+                "value": {
+                  "statusCode": 502,
+                  "message": "Bad Gateway"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ServiceUnavailable": {
+        "description": "Service is unavailable",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Error": {
+                "value": {
+                  "statusCode": 503,
+                  "message": "The service is temporarily not available, please try again later"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "CreatedAt": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "example": "2023-12-19T09:32:46.021Z",
+            "description": "Creation ISO date of the resource"
+          }
+        }
+      },
+      "UpdatedAt": {
+        "type": "object",
+        "properties": {
+          "updatedAt": {
+            "type": "string",
+            "example": "2023-12-19T09:32:46.021Z",
+            "description": "Iso date of the last updafe of the resource"
+          }
+        }
+      },
+      "Limit": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "example": 25,
+            "description": "Max amount of resource items will be fetched"
+          }
+        }
+      },
+      "NextKey": {
+        "type": "object",
+        "properties": {
+          "nextKey": {
+            "type": "string",
+            "example": "eyJTSyI6IkV4YW1wbGUtMjAyMy0xMi0yMVQxMDo1NjoxNS42MzRaIiwiUEsiOiJFeGFtcGxlfjE4OWI4YzBhMzBhZDQ5NjI4MWFkMjJmZjIwYzdkODQ1IiwiTEsiOiJFeGFtcGxlIn0=",
+            "description": "Next key for pagination via api"
+          }
+        }
+      },
+      "PrevKey": {
+        "type": "object",
+        "properties": {
+          "prevKey": {
+            "type": "string",
+            "example": "eyJTSyI6IkV4YW1wbGUtMjAyMy0xMi0yMVQxMDo1NjoxNS42MzRaIiwiUEsiOiJFeGFtcGxlfjE4OWI4YzBhMzBhZDQ5NjI4MWFkMjJmZjIwYzdkODQ1IiwiTEsiOiJFeGFtcGxlIn0=",
+            "description": "Prev key for pagination via api"
+          }
+        }
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "example": 1
+          }
+        }
+      },
+      "Id": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "770f723e94af450ea7e2c722df2c8464",
+            "description": "Unique UUID v4"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "Example": {
+        "type": "object",
+        "properties": {
+          "foo": {
+            "type": "string",
+            "example": "Test",
+            "description": "Example description"
+          },
+          "bar": {
+            "type": "integer",
+            "example": 1,
+            "description": "Example description"
+          }
+        },
+        "required": [
+          "foo",
+          "bar"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "statusCode",
+          "message"
+        ]
+      }
+    },
+    "securitySchemes": {}
+  }
 }
