@@ -30,7 +30,6 @@ export default class Paginator {
   }
 
   public decrypt(encryptedData: string): object {
-    console.log(encryptedData);
     return JSON.parse(atob(encryptedData));
   }
 }
