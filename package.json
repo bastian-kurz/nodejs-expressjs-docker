@@ -68,6 +68,7 @@
       "^#src/(.*)$": "<rootDir>/src/$1",
       "^#test/(.*)$": "<rootDir>/test/$1"
     },
+    "testPathIgnorePatterns": ["<rootDir>/build/", "<rootDir>/node_modules/"],
     "transform": {}
   }
 }
