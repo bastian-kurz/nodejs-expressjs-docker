@@ -1,12 +1,12 @@
 {
   "name": "nodejs-expressjs-docker",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "dev": "tsx watch src/index.ts",
     "dp-check": "yarn npm-check-updates",
     "db-admin": "dynamodb-admin",
     "eslint": "npx eslint src/**.ts",
-    "start": "node build/index.js",
+    "start": "yarn build && node build/src/index.js",
     "test": "jest"
   },
   "packageManager": "yarn@4.0.2",
@@ -54,6 +54,7 @@
     "npm-check-updates": "^16.14.12",
     "pactum": "^3.5.1",
     "ts-jest": "^29.1.1",
+    "tsc-alias": "^1.8.8",
     "tsx": "^4.6.2",
     "typescript": "^5.3.3"
   },
