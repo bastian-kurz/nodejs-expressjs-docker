@@ -1,16 +1,18 @@
 jest:
   stage: unit-test
   extends: .base
-  image: docker
+  image: node:20.10.0-alpine
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == "main"
   services:
-    - docker:dind
+    - name: amazon/dynamodb-local
+      alias: dynamodb-test
+      command: [ '-jar', 'DynamoDBLocal.jar', '-inMemory', '-sharedDb' ]
   before_script:
-    - docker --version
+    - export NODE_ENV=test
+    - !reference [ .script_template, script ]
+    - chmod 0777 .gitlab/scripts/serverstart.sh
+    - ./.gitlab/scripts/serverstart.sh
   script:
-    - export DYNAMODB_LOCAL_URL=http://dynamodb-local:8000
-    - docker-compose up -d
-    - docker ps
-    - docker exec application-codename-pegasus yarn test
+    - yarn test

@@ -8,12 +8,12 @@ docker-build: ## rebuild whole docker app wihtout cache
 
 .PHONY: start-server
 start-server: ## Start the whole docker app
-	docker-compose up || true
+	docker-compose --env-file ./.env.develop up || true
 
 .PHONY: start-server-silent
 start-server-silent: ## Start the whole docker app without console output
-	docker-compose up -d || true
+	docker-compose --env-file ./.env.develop up -d || true
 
 .PHONY: stop-server
 stop-server: ##stop all running container
-	docker-compose down || true
+	docker-compose --env-file ./.env.develop down || true

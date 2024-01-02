@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import express, { Application, urlencoded } from 'express';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
@@ -8,10 +7,11 @@ import ExampleController from '#src/App/Api/Controller/ExampleController';
 import HealthController from '#src/Core/Api/Controller/HealthController';
 import compression from 'compression';
 import helmet from 'helmet';
+import { EnvLoader } from '#src/Core/Framework/Util/Env';
 
 function main(): void {
   //Load project .env file
-  dotenv.config();
+  EnvLoader();
   const app: Application = express();
 
   registerMiddleware(app);
